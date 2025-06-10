@@ -1,7 +1,7 @@
 # --- GIAI ĐOẠN 1: BUILD ỨNG DỤNG ---
 # Sử dụng base image Maven với OpenJDK 21 để build dự án
-FROM openjdk:21-slim-buster
-# Đã cập nhật phiên bản Maven và OpenJDK
+# ĐÃ SỬA ĐỔI: Phải là image có Maven (ví dụ: maven:3.9-openjdk-21)
+FROM maven:3.9-openjdk-21 AS build
 
 # Đặt thư mục làm việc bên trong container
 WORKDIR /app
