@@ -15,7 +15,8 @@ RUN mvn clean package -DskipTests
 
 # --- GIAI ĐOẠN 2: CHẠY ỨNG DỤNG ---
 # Sử dụng base image nhẹ hơn chỉ chứa JRE (Java Runtime Environment) cho Java 21 (Eclipse Temurin)
-FROM eclipse-temurin:21-jre-jammy # Comment này cần được di chuyển xuống dòng riêng
+# Comment này cần được di chuyển xuống dòng riêng
+FROM eclipse-temurin:21-jre-jammy
 
 # Đặt thư mục làm việc bên trong container
 WORKDIR /app
