@@ -1,7 +1,7 @@
 # --- GIAI ĐOẠN 1: BUILD ỨNG DỤNG ---
-# Sử dụng base image Maven với OpenJDK 21 để build dự án
-# ĐÃ SỬA ĐỔI: Phải là image có Maven (ví dụ: maven:3.9-openjdk-21)
-FROM maven:3.9-openjdk-21 AS build
+# Sử dụng base image Maven với OpenJDK 21 (Eclipse Temurin) để build dự án
+# Eclipse Temurin là một bản phân phối OpenJDK đáng tin cậy.
+FROM maven:3.9-eclipse-temurin-21 AS build # ĐÃ THAY ĐỔI BASE IMAGE Ở ĐÂY
 
 # Đặt thư mục làm việc bên trong container
 WORKDIR /app
@@ -14,8 +14,8 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # --- GIAI ĐOẠN 2: CHẠY ỨNG DỤNG ---
-# Sử dụng base image nhẹ hơn chỉ chứa JRE (Java Runtime Environment) cho Java 21
-FROM openjdk:21-slim-buster
+# Sử dụng base image nhẹ hơn chỉ chứa JRE (Java Runtime Environment) cho Java 21 (Eclipse Temurin)
+FROM eclipse-temurin:21-jre-jammy # ĐÃ THAY ĐỔI BASE IMAGE Ở ĐÂY (jre-jammy là một tag phổ biến)
 
 # Đặt thư mục làm việc bên trong container
 WORKDIR /app
